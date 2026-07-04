@@ -1,0 +1,10 @@
+com\shopstack\ecommerce\config\SecurityConfig.class
+com\shopstack\ecommerce\dto\AuthResponse.class
+com\shopstack\ecommerce\controller\AuthController.class
+com\shopstack\ecommerce\EcommerceApplication.class
+com\shopstack\ecommerce\repository\UserRepository.class
+com\shopstack\ecommerce\service\AuthService.class
+com\shopstack\ecommerce\dto\RegisterRequest.class
+com\shopstack\ecommerce\entity\Role.class
+com\shopstack\ecommerce\entity\User.class
+com\shopstack\ecommerce\dto\LoginRequest.class
