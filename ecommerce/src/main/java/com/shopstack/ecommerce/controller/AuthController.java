@@ -5,6 +5,7 @@ import com.shopstack.ecommerce.dto.LoginRequest;
 import com.shopstack.ecommerce.dto.RegisterRequest;
 import com.shopstack.ecommerce.entity.User;
 import com.shopstack.ecommerce.service.AuthService;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -25,5 +26,10 @@ public class AuthController {
     @PostMapping("/login")
     public AuthResponse login(@RequestBody LoginRequest request) {
         return authService.login(request);
+    }
+
+    @GetMapping("/me")
+    public Authentication me(Authentication authentication) {
+        return authentication;
     }
 }

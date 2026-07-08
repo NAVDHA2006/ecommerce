@@ -3,7 +3,6 @@ package com.shopstack.ecommerce.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -27,11 +26,11 @@ public class SecurityConfig {
 
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
-                    "/auth/register",
-                    "/auth/login",
-                    "/login",
-                    "/oauth2/**"
-                ).permitAll()
+    "/auth/register",
+    "/auth/login",
+    "/login",
+    "/oauth2/**"
+).permitAll()
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .requestMatchers("/vendor/**").hasAnyRole("VENDOR", "ADMIN")
                 .requestMatchers("/warehouse/**").hasAnyRole("WAREHOUSE_STAFF", "ADMIN")
@@ -42,9 +41,8 @@ public class SecurityConfig {
 
             .oauth2Login(oauth2 -> oauth2
                 .successHandler(oAuth2LoginSuccessHandler)
-            )
-
-            .httpBasic(Customizer.withDefaults());
+            );
+            // httpBasic removed — JWT filter handles auth, Basic Auth was intercepting requests
 
         return http.build();
     }
